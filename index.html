@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DRL Mobiles!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="columns pt-6">
+            <div class="column is-one-third"></div>
+            <div class="box column px-4">
+                <h1 class="is-family-secondary is-size-2 has-text-centered has-text-weight-bold md-4">Invoice</h1>
+                <form id="invoice" action="https://v2-api.sheety.co/1719a575364727e469eeeb9ccea8c163/sales/invoices">
+
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="text" id="invoiceNumber" name="invoiceNumber" placeholder="Invoice Number" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Mobile Details</label>
+                        <div class="control">
+                            <input class="input" type="text" id="modelName" name="modelName" placeholder="Model Name" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="text" id="imeiNo" name="imeiNo" placeholder="IMEI Number" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="number" id="finalPrice" name="finalPrice" placeholder="Final Price" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Customer Details</label>
+                        <div class="control">
+                            <input class="input" type="text" id="customerName" name="customerName" placeholder="Customer Name" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="text" id="customerNumber" name="customerNumber" placeholder="Customer Number" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="textarea" id="customerAddress" name="customerAddress" placeholder="Customer Address" required>
+                        </div>
+                    </div>
+                    
+                    <div class="field is-grouped is-grouped-centered">
+                        <div class="control">
+                            <button class="button is-link" type="submit">Generate Bill</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-link is-light" type="reset">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="column is-one-third"></div>
+        </div>
+    </div>
+</body>
+
+</html>

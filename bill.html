@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="words.js"></script>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <div class="mt-3" id="printable">
+            <div class="has-text-centered">
+                <h1 class="has-text-weight-bold is-size-3"><a href="index.html" class="has-text-black">DRL Mobiles</a></h1>
+                <h2 class="has-text-weight-semibold">GSTN: 372956841ADC2P</h2>
+                <p>SKPT Complex, Main Road, Narsipatnam, Visakhapatnam, AP -531116</p>
+                <p>Phn. 9676648889</p>
+            </div>
+            <div class="has-text-centered my-5">
+                <h1 class="has-text-weight-bold is-size-5"><u>TAX INVOICE</u></h1>
+            </div>
+            <div class="columns">
+                <div class="column is-5">
+                    <h1>Invoice No. <span id="invoiceNumber" class="has-text-weight-semibold"></span></h1>
+                    <h2>Date. <span id="date" class="has-text-weight-semibold"></span></h2>
+                </div>
+                <div class="column is-2"></div>
+                <div class="column is-5 has-text-right">
+                    <h1 class="is-capitalized has-text-weight-semibold"><span id="customerName"></span></h1>
+                    <h2 class="is-capitalized"><span id="customerAddress"></span></h2>
+                    <h2><span id="customerNumber"></span></h2>
+                </div>
+            </div>
+            <div class="mt-5">
+                <table class="table is-bordered is-fullwidth">
+                    <thead>
+                        <tr>
+                            <!-- <th>S.No.</th> -->
+                            <th>Model Details</th>
+                            <th>Tax</th>
+                            <th>Taxable Value</th>
+                            <th>SGST (9%)</th>
+                            <th>CGST (9%)</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- <td>1</th> -->
+                            <td><span id="modelName" class="is-capitalized"></span><br> IMEI No. <span id="imeiNo"></span></th>
+                            <td>18%</th>
+                            <td id="price"><span id="price"></span></th>
+                            <td id="sgst"><span id="sgst"></span></th>
+                            <td id="cgst"><span id="cgst"></span></th>
+                            <td id="finalPrice"><span id="finalPrice"></span></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-3 md-6 pd-6">
+                <h1 class="has-text-weight-semibold">Paid, <span id="word"></span> Rupees only</h1>
+                
+            </div>
+            <div class="columns mt-6 pt-6">
+                <div class="column is-5">
+                    <h1 class="has-text-weight-semibold">Customer Signature</h1>
+                </div>
+                <div class="column is-2"></div>
+                <div class="column is-5 has-text-right">
+                    <h1 class="has-text-weight-semibold">Seller Signature & Stamp</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var imeiNo = localStorage.getItem("imeiNo");
+        $('#imeiNo').append(imeiNo);
+
+        var modelName = localStorage.getItem("modelName");
+        $('#modelName').append(modelName);
+
+        var invoiceNumber = localStorage.getItem("invoiceNumber");
+        $('#invoiceNumber').append(invoiceNumber);
+
+        var finalPrice = localStorage.getItem("finalPrice");
+        $('#finalPrice').append(Number(finalPrice).toLocaleString('en-IN'));
+
+        var customerName = localStorage.getItem("customerName");
+        $('#customerName').append(customerName);
+
+        var customerNumber = localStorage.getItem("customerNumber");
+        $('#customerNumber').append(customerNumber);
+
+        var customerAddress = localStorage.getItem("customerAddress");
+        $('#customerAddress').append(customerAddress);
+
+        var price = localStorage.getItem("price");
+        $('#price').append(Number(price).toLocaleString('en-IN'));
+
+        var sgst = localStorage.getItem("sgst");
+        $('#sgst').append(Number(sgst).toLocaleString('en-IN'));
+
+        var cgst = localStorage.getItem("cgst");
+        $('#cgst').append(Number(cgst).toLocaleString('en-IN'));
+
+        var word = convertNumberToWords(finalPrice);
+        $('#word').append(word);
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = dd + '/' + mm + '/' + yyyy;
+        $('#date').append(today)
+
+    </script>
+</body>
+</html>
